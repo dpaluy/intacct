@@ -1,5 +1,6 @@
 # intacct gem
 
+<https://github.com/flajann2/juwelier>
 Description goes here.
 
 ## Contributing to intacct
