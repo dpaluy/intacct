@@ -19,7 +19,7 @@ module Intacct
       end
     end
 
-  private
+    private
 
     def add_control_block(builder)
       builder.control do

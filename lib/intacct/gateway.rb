@@ -20,7 +20,7 @@ module Intacct
     end
 
     def execute_functions(functions)
-
+      # TODO
     end
 
     private

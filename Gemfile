@@ -1,14 +1,17 @@
-source "https://rubygems.org"
-# Add dependencies required to use your gem here.
-# Example:
-#   gem "activesupport", ">= 2.3.5"
+source 'https://rubygems.org'
 
-# Add dependencies to develop your gem here.
-# Include everything needed to run rake, tests, features, etc.
 group :development do
-  gem "shoulda", ">= 0"
-  gem "rdoc", "~> 3.12"
-  gem "bundler", "~> 1.0"
-  gem "juwelier", "~> 2.1.0"
-  gem "simplecov", ">= 0"
+  gem 'bundler'
+  gem 'juwelier', '~> 2.1.0'
+  gem 'pry-byebug'
+  gem 'rdoc', '~> 3.12'
+  gem 'rspec', '~> 3.11.0'
+  gem 'shoulda', '~> 4.0.0'
+  gem 'simplecov', '>= 0.21.0'
+  gem 'timecop', '~> 0.9.0'
+  gem 'webmock', '~> 3.18.0'
+
+  gem 'codeclimate-test-reporter', require: false
+  gem 'coveralls', require: false
+  gem 'rubocop', require: false
 end

@@ -1,9 +1,29 @@
-# intacct gem
+# Intacct Sage Ruby wrapper
 
-<https://github.com/flajann2/juwelier>
-Description goes here.
+This is Ruby wrapper to [Intacct Sage API](https://developer.intacct.com/api/)
 
-## Contributing to intacct
+## Status
+
+TBD
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+`gem 'intacct'`
+
+## Usage
+
+```
+Intacct.configure do |config|
+  config.sender_id = 'SENDER-ID-FROM-SAGE'
+  config.sender_password = 'SENDER-PASSWORD-FROM-SAGE'
+end
+```
+
+TBD
+
+## Contributing to intacct gem
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
