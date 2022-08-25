@@ -19,11 +19,12 @@ Juwelier::Tasks.new do |gem|
   gem.summary = %Q{Sage Intacct API wrapper}
   gem.description = %Q{Sage Intacct API wrapper}
   gem.email = "dpaluy@users.noreply.github.com"
-  gem.authors = ["David Paluy"]
+  gem.authors = ["David Paluy", "Yaroslav Konovets"]
 
   # dependencies defined in Gemfile
 end
 Juwelier::RubygemsDotOrgTasks.new
+
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
@@ -31,17 +32,23 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
-desc "Code coverage detail"
-task :simplecov do
-  ENV['COVERAGE'] = "true"
-  Rake::Task['test'].execute
+require 'rspec/core'
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec) do |spec|
+  spec.pattern = FileList['spec/**/*_spec.rb']
 end
 
-task :default => :test
+desc 'Code coverage detail'
+task :simplecov do
+  ENV['COVERAGE'] = 'true'
+  Rake::Task['spec'].execute
+end
+
+task default: :spec
 
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
+  version = File.exist?('VERSION') ? File.read('VERSION') : ''
 
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "intacct #{version}"

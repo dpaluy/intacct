@@ -5,7 +5,7 @@ require 'intacct/version'
 Gem::Specification.new do |spec|
   spec.name                  = 'intacct'
   spec.version               = Intacct::VERSION
-  spec.authors               = ['David Paluy']
+  spec.authors               = ['David Paluy', 'Yaroslav Konovets']
   spec.required_ruby_version = '>= 2.2.0'
   spec.summary               = 'A Ruby wrapper for the Intacct API'
   spec.license               = 'MIT'
