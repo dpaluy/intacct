@@ -1,11 +1,10 @@
 require_relative 'intacct/config'
-require_relative 'intacct/client'
+require_relative 'intacct/gateway'
 require_relative 'intacct/request'
-require_relative 'intacct/query'
+require_relative 'intacct/functions/get_api_session'
+require_relative 'intacct/functions/query'
 
 module Intacct
-  VERSION = File.read(File.expand_path('../../VERSION', __FILE__)).strip.freeze
-
   def self.logger
     config.logger
   end

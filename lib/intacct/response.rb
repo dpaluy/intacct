@@ -1,3 +1,6 @@
+require 'intacct/function_result'
+
+
 module Intacct
   class Response
     attr_reader :response_body
@@ -21,10 +24,26 @@ module Intacct
       function_errors.none?
     end
 
+    def get_function_result(function_key)
+      return unless successful?
+
+      @function_results ||= build_function_results
+      @function_results[function_key]
+    end
+
     private
 
     def raise_function_errors
       raise Exceptions::FunctionFailureException, function_errors.join("\n")
+    end
+
+    def build_function_results
+      @response_body.xpath("//result").map do |xml_entry|
+        [
+          xml_entry.xpath('controlid').text,
+          Intacct::FunctionResult.new(xml_entry.xpath('status').text, xml_entry.xpath('controlid').text, xml_entry.xpath('data'))
+        ]
+      end.to_h
     end
   end
 end
