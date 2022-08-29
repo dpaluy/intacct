@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'faraday', '~> 1.10.0'
+
 group :development do
   gem 'bundler'
   gem 'juwelier', '~> 2.1.0'

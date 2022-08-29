@@ -2,12 +2,15 @@ require 'builder'
 
 module Intacct
   class Request
+    attr_reader :opts
+
     def initialize(opts)
       @opts = opts
     end
 
     def add_content_block(functions)
-      @content_block_children = functions
+      blocks = functions.is_a?(Array) ? functions : [functions]
+      @content_block_children = blocks
     end
 
     def to_xml
@@ -23,14 +26,14 @@ module Intacct
 
     def add_control_block(builder)
       builder.control do
-        builder.senderid @opts[:senderid]
-        builder.password @opts[:sender_password]
+        builder.senderid opts[:senderid]
+        builder.password opts[:sender_password]
 
         # As recommended by Intacct API reference. This ID should be unique
         # to the call: it's used to associate a response with a request.
         builder.controlid          timestamp
-        builder.uniqueid           @opts.fetch(:uniqueid, false)
-        builder.dtdversion         @opts.fetch(:uniqueid, 3.0)
+        builder.uniqueid           opts.fetch(:uniqueid, false)
+        builder.dtdversion         opts.fetch(:uniqueid, 3.0)
         builder.includewhitespace  false
       end
     end
@@ -52,9 +55,9 @@ module Intacct
     def authentication_block(builder)
       builder.authentication do
         builder.login do
-          builder.userid    @opts[:userid]
-          builder.companyid @opts[:companyid]
-          builder.password  @opts[:user_password]
+          builder.userid    opts[:userid]
+          builder.companyid opts[:companyid]
+          builder.password  opts[:user_password]
         end
       end
     end
