@@ -39,10 +39,11 @@ module Intacct
 
     def build_function_results
       @response_body.xpath("//result").map do |xml_entry|
-        [
-          xml_entry.xpath('controlid').text,
-          Intacct::FunctionResult.new(xml_entry.xpath('status').text, xml_entry.xpath('controlid').text, xml_entry.xpath('data'))
-        ]
+        function_result = Intacct::FunctionResult.new(
+          xml_entry.xpath('status').text, xml_entry.xpath('controlid').text, xml_entry.xpath('data')
+        )
+
+        [function_result.control_id, function_result]
       end.to_h
     end
   end
