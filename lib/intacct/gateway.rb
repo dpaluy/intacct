@@ -15,6 +15,9 @@ module Intacct
       post_request['Content-Type'] = 'x-intacct-xml-request'
       post_request.body = api_request.to_xml(@control_config)
       puts post_request.body
+      debugger
+
+      p 3
       http_response = @http_gateway.request(post_request)
 
       Intacct::Response.new(http_response)

@@ -10,10 +10,6 @@ module Intacct
 
       # raises an error unless the response is in the 2xx range.
       http_response.value
-
-      # in case the response is a success, but one of the included functions
-      # failed and the transaction was rolled back
-      raise_function_errors unless successful?
     end
 
     def function_errors
@@ -25,23 +21,17 @@ module Intacct
     end
 
     def get_function_result(function_key)
-      return unless successful?
-
       @function_results ||= build_function_results
       @function_results[function_key]
     end
 
     private
 
-    def raise_function_errors
-      raise Exceptions::FunctionFailureException, function_errors.join("\n")
-    end
-
     def build_function_results
       @response_body.xpath("//result").map do |xml_entry|
-        function_result = Intacct::FunctionResult.new(
-          xml_entry.xpath('status').text, xml_entry.xpath('controlid').text, xml_entry.xpath('data')
-        )
+        response_status = xml_entry.xpath('status').text
+        data = response_status == 'success' ? xml_entry.xpath('data') : xml_entry.xpath('error')
+        function_result = Intacct::FunctionResult.new(response_status, xml_entry.xpath('controlid').text, data)
 
         [function_result.control_id, function_result]
       end.to_h
