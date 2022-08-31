@@ -20,9 +20,9 @@ module Intacct
       function_errors.none?
     end
 
-    def get_function_result(function_key)
+    def get_function_result(control_id)
       @function_results ||= build_function_results
-      @function_results[function_key]
+      @function_results[control_id]
     end
 
     private
