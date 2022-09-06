@@ -7,7 +7,7 @@ module Intacct
     def initialize(transaction_operation: false)
       @functions = []
       @authentication = nil
-      @transaction_operation = false
+      @transaction_operation = transaction_operation
     end
 
     def add_function(function, control_id)
