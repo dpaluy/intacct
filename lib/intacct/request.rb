@@ -14,8 +14,10 @@ module Intacct
       @functions << { function:, control_id: }
     end
 
-    def use_credentials_authentication(user_id:, company_id:, password:)
-      @authentication = Intacct::AuthenticationMethods::Credentials.new(user_id:, company_id:, password:)
+    def use_credentials_authentication(user_id:, company_id:, user_password:)
+      @authentication = Intacct::AuthenticationMethods::Credentials.new(
+        user_id:, company_id:, password: user_password
+      )
     end
 
     def use_session_authentication(session_token)
@@ -37,7 +39,7 @@ module Intacct
 
     def add_control_block(builder, config)
       builder.control do
-        builder.senderid config.fetch(:senderid)
+        builder.senderid config.fetch(:sender_id)
         builder.password config.fetch(:sender_password)
 
         # As recommended by Intacct API reference. This ID should be unique
