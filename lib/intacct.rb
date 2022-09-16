@@ -5,6 +5,7 @@ require_relative 'intacct/request'
 require_relative 'intacct/functions/get_api_session'
 require_relative 'intacct/functions/query'
 require_relative 'intacct/functions/create'
+require_relative 'intacct/functions/retrieve_pdf'
 
 module Intacct
   def self.logger
