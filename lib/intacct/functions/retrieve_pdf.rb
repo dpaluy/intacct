@@ -8,12 +8,9 @@ module Intacct
       def to_xml
         builder = Builder::XmlMarkup.new
         builder.retrievepdf do
-          if @query_block.present?
-            @query_block.call(builder)
-          end
+          @query_block.call(builder) if @query_block.present?
         end
       end
     end
   end
 end
-
