@@ -15,11 +15,8 @@ module Intacct
         builder.read do
           builder.object @object
           builder.keys keys.join(',')
-          if @fields.any?
-            fields.each { |field| builder.field field }
-          else
-            builder.fields '*'
-          end
+          fields_value = @fields.any? ? @fields.join(',') : '*'
+          builder.fields fields_value
           args.each do |key, value|
             builder.tag!(key, value)
           end
