@@ -12,12 +12,8 @@ module Intacct
       http_response.value
     end
 
-    def function_errors
-      @function_errors ||= @response_body.xpath('//error/description2').map(&:text)
-    end
-
     def successful?
-      function_errors.none?
+      @response_body.xpath('//response/control/status').text == 'success'
     end
 
     def get_function_result(control_id)
