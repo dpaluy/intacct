@@ -4,11 +4,11 @@ module Intacct
     DATETIME_FORMAT = "%m/%d/%Y %H:%M:%S".freeze
 
     def self.format_date(date)
-      date.strftime(DATE_FORMAT)
+      date&.strftime(DATE_FORMAT)
     end
 
     def self.format_datetime(datetime)
-      datetime.strftime(DATETIME_FORMAT)
+      datetime&.strftime(DATETIME_FORMAT)
     end
 
     def self.parse_date(date)
