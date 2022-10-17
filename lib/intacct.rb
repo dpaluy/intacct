@@ -8,6 +8,7 @@ require_relative 'intacct/functions/get_api_session'
 require_relative 'intacct/functions/query'
 require_relative 'intacct/functions/read'
 require_relative 'intacct/functions/retrieve_pdf'
+require_relative 'intacct/functions/reverse_payment'
 
 module Intacct
   def self.logger
