@@ -2,10 +2,10 @@ module Intacct
   class FunctionResult
     attr_reader :status, :control_id, :xml_data
 
-    def initialize(status, control_id, xml_data)
-      @status = status
-      @control_id = control_id
-      @xml_data = xml_data
+    def initialize(xml_entry)
+      @status = xml_entry.xpath('status').text
+      @control_id = xml_entry.xpath('controlid').text
+      @xml_data = xml_entry
     end
 
     def successful?
@@ -13,7 +13,8 @@ module Intacct
     end
 
     def parsed_data
-      Crack::XML.parse(@xml_data.to_s)
+      hash = Crack::XML.parse(@xml_data.to_s)
+      successful? ? hash.fetch('result') : hash
     end
   end
 end

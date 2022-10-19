@@ -25,9 +25,7 @@ module Intacct
 
     def build_function_results
       @response_body.xpath("//result").map do |xml_entry|
-        response_status = xml_entry.xpath('status').text
-        data = response_status == 'success' ? xml_entry.xpath('data') : xml_entry.xpath('error')
-        function_result = Intacct::FunctionResult.new(response_status, xml_entry.xpath('controlid').text, data)
+        function_result = Intacct::FunctionResult.new(xml_entry)
 
         [function_result.control_id, function_result]
       end.to_h
