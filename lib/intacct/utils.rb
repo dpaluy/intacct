@@ -15,22 +15,26 @@ module Intacct
     end
 
     def self.format_year(date)
-      date.strftime(YEAR_FORMAT)
+      date&.strftime(YEAR_FORMAT)
     end
 
     def self.format_month(date)
-      date.strftime(MONTH_FORMAT)
+      date&.strftime(MONTH_FORMAT)
     end
 
     def self.format_day(date)
-      date.strftime(DAY_FORMAT)
+      date&.strftime(DAY_FORMAT)
     end
 
     def self.parse_date(date)
+      return nil if date.nil?
+
       Date.strptime(date, DATE_FORMAT)
     end
 
     def self.parse_datetime(datetime)
+      return nil if datetime.nil?
+
       DateTime.strptime(datetime, DATETIME_FORMAT)
     end
   end
