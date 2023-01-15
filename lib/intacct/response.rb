@@ -1,5 +1,5 @@
 require 'intacct/function_result'
-
+require 'intacct/authentication_result'
 
 module Intacct
   class Response
@@ -19,6 +19,10 @@ module Intacct
     def get_function_result(control_id)
       @function_results ||= build_function_results
       @function_results[control_id.to_s]
+    end
+
+    def get_authentication_result
+      Intacct::AuthenticationResult.new(@response_body.xpath('//response/operation/authentication'))
     end
 
     private
