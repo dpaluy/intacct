@@ -5,7 +5,7 @@ module Intacct
     attr_accessor :sender_id, :sender_password, :url, :raise_exceptions, :logger
 
     def initialize
-      @logger = Logger.new($stderr)
+      @logger = Logger.new($stdout, level: Logger::Severity::ERROR)
       @raise_exceptions = true
     end
   end
