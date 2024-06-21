@@ -1,10 +1,11 @@
 module Intacct
   module Functions
     class Query
-      def initialize(object, fields:, **args)
+      def initialize(object, fields:, order: {}, **args)
         @object = object
         @fields = fields
         @args = args
+        @order = order
       end
 
       def add_filter(&block)
@@ -32,6 +33,30 @@ module Intacct
           @args.each do |key, value|
             builder.tag!(key, value)
           end
+
+          if @order.present?
+            builder.orderby do
+              @order.each do |attribute, direction|
+                builder.order do
+                  builder.field attribute
+                  builder.tag!(to_direction(direction))
+                end
+              end
+            end
+          end
+        end
+      end
+
+      private
+
+      def to_direction(direction)
+        case direction
+        when :asc
+          'ascending'
+        when :desc
+          'descending'
+        else
+          raise ArgumentError, "Invalid direction: #{direction}"
         end
       end
     end
