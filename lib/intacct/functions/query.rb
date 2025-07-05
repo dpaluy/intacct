@@ -1,11 +1,12 @@
 module Intacct
   module Functions
     class Query
-      def initialize(object, fields:, order: {}, **args)
+      def initialize(object, fields:, order: {}, case_insensitive: true, **args)
         @object = object
         @fields = fields
-        @args = args
         @order = order
+        @case_insensitive = case_insensitive
+        @args = args
       end
 
       def add_filter(&block)
@@ -43,6 +44,10 @@ module Intacct
                 end
               end
             end
+          end
+
+          builder.options do
+            builder.caseinsensitive(@case_insensitive)
           end
         end
       end
