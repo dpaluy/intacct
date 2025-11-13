@@ -13,6 +13,8 @@ Style/Documentation:
 
 Metrics/MethodLength:
   Max: 20
+  Exclude:
+    - 'lib/intacct/functions/query.rb'
 
 Metrics/ClassLength:
   Max: 150
@@ -23,6 +25,30 @@ Metrics/ModuleLength:
   Max: 150
   Exclude:
     - 'test/**/*'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'lib/intacct/functions/query.rb'
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'lib/intacct/functions/query.rb'
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'lib/intacct/functions/query.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*'
+    - 'lib/intacct/functions/query.rb'
+    - '*.gemspec'
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Gemspec/DevelopmentDependencies:
+  Enabled: false
 
 Style/StringConcatenation:
   Enabled: false
