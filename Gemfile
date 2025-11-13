@@ -1,20 +1,7 @@
-source 'https://rubygems.org'
+# frozen_string_literal: true
 
-gem 'faraday', '~> 1.10.0'
-gem 'json', '~> 2.7'
+source "https://rubygems.org"
 
-group :development do
-  gem 'bundler'
-  gem 'juwelier', '~> 2.4.9'
-  gem 'pry-byebug'
-  gem 'rdoc', '~> 6.0'
-  gem 'rspec', '~> 3.11.0'
-  gem 'shoulda', '~> 4.0.0'
-  gem 'simplecov', '>= 0.21.0'
-  gem 'timecop', '~> 0.9.0'
-  gem 'webmock', '~> 3.18.0'
+gemspec
 
-  gem 'codeclimate-test-reporter', require: false
-  gem 'coveralls', require: false
-  gem 'rubocop', require: false
-end
+gem "rake", "~> 13.0"
