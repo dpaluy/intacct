@@ -4,7 +4,7 @@ gem 'faraday', '~> 1.10.0'
 
 group :development do
   gem 'bundler'
-  gem 'juwelier', '~> 2.1.0'
+  gem 'juwelier', '~> 2.4.9'
   gem 'pry-byebug'
   gem 'rdoc', '~> 3.12'
   gem 'rspec', '~> 3.11.0'
