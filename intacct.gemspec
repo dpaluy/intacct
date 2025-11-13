@@ -62,10 +62,11 @@ Gem::Specification.new do |s|
   s.specification_version = 4
 
   s.add_runtime_dependency(%q<faraday>.freeze, ["~> 1.10.0".freeze])
+  s.add_runtime_dependency(%q<json>.freeze, ["~> 2.7".freeze])
   s.add_development_dependency(%q<bundler>.freeze, [">= 0".freeze])
   s.add_development_dependency(%q<juwelier>.freeze, ["~> 2.4.9".freeze])
   s.add_development_dependency(%q<pry-byebug>.freeze, [">= 0".freeze])
-  s.add_development_dependency(%q<rdoc>.freeze, ["~> 3.12".freeze])
+  s.add_development_dependency(%q<rdoc>.freeze, ["~> 6.0".freeze])
   s.add_development_dependency(%q<rspec>.freeze, ["~> 3.11.0".freeze])
   s.add_development_dependency(%q<shoulda>.freeze, ["~> 4.0.0".freeze])
   s.add_development_dependency(%q<simplecov>.freeze, [">= 0.21.0".freeze])
