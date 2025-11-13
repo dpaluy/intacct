@@ -1,57 +1,21 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
-require 'rubygems'
-require 'bundler'
+require "bundler/gem_tasks"
+require "minitest/test_task"
+
+Minitest::TestTask.create
+
+require "rubocop/rake_task"
+RuboCop::RakeTask.new
+
 begin
-  Bundler.setup(:default, :development)
-rescue Bundler::BundlerError => e
-  $stderr.puts e.message
-  $stderr.puts "Run `bundle install` to install missing gems"
-  exit e.status_code
-end
-require 'rake'
-require 'juwelier'
-Juwelier::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
-  gem.name = "intacct"
-  gem.homepage = "http://github.com/dpaluy/intacct"
-  gem.license = "MIT"
-  gem.summary = %Q{Sage Intacct API wrapper}
-  gem.description = %Q{Sage Intacct API wrapper}
-  gem.email = "dpaluy@users.noreply.github.com"
-  gem.authors = ["David Paluy", "Yaroslav Konovets"]
-
-  # dependencies defined in Gemfile
-end
-Juwelier::RubygemsDotOrgTasks.new
-
-require 'rake/testtask'
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
+  require "yard"
+  YARD::Rake::YardocTask.new do |t|
+    t.files = ["lib/**/*.rb"]
+    t.options = ["--markup", "markdown", "--no-private"]
+  end
+rescue LoadError
+  # YARD not available
 end
 
-require 'rspec/core'
-require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new(:spec) do |spec|
-  spec.pattern = FileList['spec/**/*_spec.rb']
-end
-
-desc 'Code coverage detail'
-task :simplecov do
-  ENV['COVERAGE'] = 'true'
-  Rake::Task['spec'].execute
-end
-
-task default: :spec
-
-require 'rdoc/task'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ''
-
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "intacct #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end
+task default: %i[test rubocop]
