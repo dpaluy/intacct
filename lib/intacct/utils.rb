@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Intacct
   module Utils
-    YEAR_FORMAT = "%Y".freeze
-    MONTH_FORMAT = "%m".freeze
-    DAY_FORMAT = "%d".freeze
+    YEAR_FORMAT = "%Y"
+    MONTH_FORMAT = "%m"
+    DAY_FORMAT = "%d"
     DATE_FORMAT = "#{MONTH_FORMAT}/#{DAY_FORMAT}/#{YEAR_FORMAT}".freeze
     DATETIME_FORMAT = "#{MONTH_FORMAT}/#{DAY_FORMAT}/#{YEAR_FORMAT} %H:%M:%S".freeze
 

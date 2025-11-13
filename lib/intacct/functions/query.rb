@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Intacct
   module Functions
     class Query
@@ -57,9 +59,9 @@ module Intacct
       def to_direction(direction)
         case direction
         when :asc
-          'ascending'
+          "ascending"
         when :desc
-          'descending'
+          "descending"
         else
           raise ArgumentError, "Invalid direction: #{direction}"
         end

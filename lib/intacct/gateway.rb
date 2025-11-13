@@ -1,8 +1,10 @@
-require 'intacct/response'
+# frozen_string_literal: true
+
+require "intacct/response"
 
 module Intacct
   class Gateway
-    URI_STRING = 'https://api.intacct.com/ia/xml/xmlgw.phtml'.freeze
+    URI_STRING = "https://api.intacct.com/ia/xml/xmlgw.phtml"
 
     def initialize(control_config)
       @control_config = control_config
@@ -12,7 +14,7 @@ module Intacct
 
     def execute_request(api_request)
       post_request ||= Net::HTTP::Post.new(uri.request_uri)
-      post_request['Content-Type'] = 'x-intacct-xml-request'
+      post_request["Content-Type"] = "x-intacct-xml-request"
       post_request.body = api_request.to_xml(@control_config)
       Intacct.logger.debug("Request Body: #{post_request.body}")
       http_response = @http_gateway.request(post_request)

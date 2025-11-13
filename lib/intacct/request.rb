@@ -1,6 +1,8 @@
-require 'builder'
-require 'intacct/authentication_methods/credentials'
-require 'intacct/authentication_methods/session'
+# frozen_string_literal: true
+
+require "builder"
+require "intacct/authentication_methods/credentials"
+require "intacct/authentication_methods/session"
 
 module Intacct
   class Request

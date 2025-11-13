@@ -1,15 +1,53 @@
 AllCops:
+  TargetRubyVersion: 3.2
   NewCops: enable
   SuggestExtensions: false
   Exclude:
-    - '*.gemspec'
-    - 'Rakefile'
-    - 'spec/spec_helper.rb'
+    - 'vendor/**/*'
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/Documentation:
+  Enabled: false
 
 Metrics/MethodLength:
   Max: 20
+  Exclude:
+    - 'lib/intacct/functions/query.rb'
 
-Style/Documentation:
+Metrics/ClassLength:
+  Max: 150
+  Exclude:
+    - 'test/**/*'
+
+Metrics/ModuleLength:
+  Max: 150
+  Exclude:
+    - 'test/**/*'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'lib/intacct/functions/query.rb'
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'lib/intacct/functions/query.rb'
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'lib/intacct/functions/query.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*'
+    - 'lib/intacct/functions/query.rb'
+    - '*.gemspec'
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Gemspec/DevelopmentDependencies:
   Enabled: false
 
 Style/StringConcatenation:
