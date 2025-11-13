@@ -1,16 +1,28 @@
 AllCops:
+  TargetRubyVersion: 3.2
   NewCops: enable
   SuggestExtensions: false
   Exclude:
-    - '*.gemspec'
-    - 'Rakefile'
-    - 'spec/spec_helper.rb'
+    - 'vendor/**/*'
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/Documentation:
+  Enabled: false
 
 Metrics/MethodLength:
   Max: 20
 
-Style/Documentation:
-  Enabled: false
+Metrics/ClassLength:
+  Max: 150
+  Exclude:
+    - 'test/**/*'
+
+Metrics/ModuleLength:
+  Max: 150
+  Exclude:
+    - 'test/**/*'
 
 Style/StringConcatenation:
   Enabled: false
