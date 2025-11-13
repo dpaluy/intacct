@@ -1,5 +1,7 @@
-require 'intacct/function_result'
-require 'intacct/authentication_result'
+# frozen_string_literal: true
+
+require "intacct/function_result"
+require "intacct/authentication_result"
 
 module Intacct
   class Response
@@ -13,7 +15,7 @@ module Intacct
     end
 
     def successful?
-      @response_body.xpath('//response/control/status').text == 'success'
+      @response_body.xpath("//response/control/status").text == "success"
     end
 
     def get_function_result(control_id)
@@ -22,17 +24,17 @@ module Intacct
     end
 
     def get_authentication_result
-      Intacct::AuthenticationResult.new(@response_body.xpath('//response/operation/authentication'))
+      Intacct::AuthenticationResult.new(@response_body.xpath("//response/operation/authentication"))
     end
 
     private
 
     def build_function_results
-      @response_body.xpath("//result").map do |xml_entry|
+      @response_body.xpath("//result").to_h do |xml_entry|
         function_result = Intacct::FunctionResult.new(xml_entry)
 
         [function_result.control_id, function_result]
-      end.to_h
+      end
     end
   end
 end

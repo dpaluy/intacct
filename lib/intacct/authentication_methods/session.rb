@@ -1,4 +1,6 @@
-require 'builder'
+# frozen_string_literal: true
+
+require "builder"
 
 module Intacct
   module AuthenticationMethods

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Intacct
   module Functions
     class Read
@@ -14,8 +16,8 @@ module Intacct
         builder = Builder::XmlMarkup.new
         builder.read do
           builder.object @object
-          builder.keys keys.join(',')
-          fields_value = @fields.any? ? @fields.join(',') : '*'
+          builder.keys keys.join(",")
+          fields_value = @fields.any? ? @fields.join(",") : "*"
           builder.fields fields_value
           args.each do |key, value|
             builder.tag!(key, value)

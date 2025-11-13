@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 module Intacct
   class AuthenticationResult
     attr_reader :status, :xml_data
 
     def initialize(xml_entry)
-      @status = xml_entry.xpath('status').text
+      @status = xml_entry.xpath("status").text
       @xml_data = xml_entry
     end
 
     def successful?
-      @status == 'success'
+      @status == "success"
     end
 
     def parsed_data

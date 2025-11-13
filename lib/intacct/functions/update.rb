@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Intacct
   module Functions
     class Update
@@ -18,4 +20,3 @@ module Intacct
     end
   end
 end
-
