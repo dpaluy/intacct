@@ -14,18 +14,6 @@ Add this line to your application's Gemfile:
 gem "intacct"
 ```
 
-Then execute:
-
-```bash
-bundle install
-```
-
-Or install it yourself:
-
-```bash
-gem install intacct
-```
-
 **Requirements:** Ruby 3.2 or higher.
 
 ## Usage

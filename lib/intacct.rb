@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative "intacct/version"
 require_relative "intacct/utils"
 require_relative "intacct/config"
 require_relative "intacct/gateway"
