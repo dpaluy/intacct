@@ -2,7 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/intacct.svg)](https://badge.fury.io/rb/intacct)
 [![Documentation](https://img.shields.io/badge/docs-rubydoc.info-blue.svg)](https://rubydoc.info/gems/intacct)
-[![CI](https://github.com/dpaluy/intacct/workflows/CI/badge.svg)](https://github.com/dpaluy/intacct/actions)
+[![CI](https://github.com/dpaluy/intacct/actions/workflows/ci.yml/badge.svg)](https://github.com/dpaluy/intacct/actions/workflows/ci.yml)
 
 A Ruby gem for interacting with the [Sage Intacct API](https://developer.intacct.com/api/).
 
